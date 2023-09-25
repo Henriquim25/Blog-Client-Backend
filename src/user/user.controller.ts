@@ -43,4 +43,9 @@ export class UserController {
   async remove(@Param('id') id: string) {
     return this.userService.remove(id);
   }
+
+  @Get('/getuserbyemail/:email')
+  async findUserByEmail(@Param('email') email: string) {
+    return this.userService.findUserByEmail(email);
+  }
 }

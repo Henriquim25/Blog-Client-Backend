@@ -74,4 +74,14 @@ export class UserService {
   async remove(id: string) {
     await this.userRepository.softDelete(id);
   }
+
+  async findUserByEmail(email: string) {
+    const user = await this.userRepository.findOne({ where: { email } });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    return user;
+  }
 }
